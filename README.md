@@ -1,400 +1,362 @@
-\# TaskFlow
+<div align="center">
 
+# ⚡ TaskFlow
 
+### A modern full-stack productivity & task management application
 
-TaskFlow is a modern full-stack task management application built with \*\*React.js\*\* and \*\*ASP.NET Core Web API\*\*.
+Built with **React • ASP.NET Core • Entity Framework Core • SQLite**
 
+<br />
 
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-Backend-239120?style=for-the-badge&logo=csharp&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 
-It provides a clean productivity dashboard for creating, updating, organizing, filtering, and tracking tasks while maintaining persistent activity history.
+<br />
 
+A responsive task-management dashboard for organizing work, tracking
+progress, managing priorities, and maintaining a persistent activity history.
 
+</div>
 
-\## Screenshots
+---
 
+## 📸 Application Preview
 
+### 🏠 Dashboard
 
-\### Dashboard
+<p align="center">
+  <img src="./screenshots/dashboard.png" alt="TaskFlow Dashboard" width="900"/>
+</p>
 
+The dashboard provides an overview of tasks, completion statistics, overdue
+work, search and filtering, and a visual completion-rate indicator.
 
+### 📋 Activity Tracking
 
-!\[TaskFlow Dashboard](screenshots/dashboard.png)
+<p align="center">
+  <img src="./screenshots/activity.png" alt="TaskFlow Activity" width="900"/>
+</p>
 
+TaskFlow maintains a persistent history of task creation, updates,
+completion, and deletion using the ASP.NET Core API and SQLite database.
 
+### 🌙 Dark Mode
 
-\### Activity
+<p align="center">
+  <img src="./screenshots/dark-mode.png" alt="TaskFlow Dark Mode" width="900"/>
+</p>
 
+The interface includes a persistent dark theme preference stored using
+browser local storage.
 
+---
 
-!\[TaskFlow Activity](screenshots/activity.png)
+## ✨ Features
 
+| Feature | Description |
+|---|---|
+| ➕ **Task Creation** | Create tasks with title, description, priority, status and due date |
+| ✏️ **Task Editing** | Modify existing task information |
+| 🗑️ **Task Deletion** | Delete tasks with confirmation |
+| 🔎 **Search** | Search tasks by title and description |
+| 🎯 **Filtering** | Filter by status and priority |
+| 📊 **Dashboard Analytics** | View total, active, completed and overdue tasks |
+| 🍩 **Completion Tracking** | Dynamic completion-rate visualization |
+| 🕒 **Activity History** | Persistent audit-style activity tracking |
+| 🌙 **Dark Mode** | Persistent light/dark appearance preference |
+| 🔔 **Toast Notifications** | Visual feedback for CRUD operations |
+| 📱 **Responsive UI** | Interface adapts across screen sizes |
+| 💾 **Persistence** | Tasks and activity stored in SQLite |
 
+---
 
-\### Dark Mode
+## 🛠️ Technology Stack
 
+### Frontend
 
+| Technology | Purpose |
+|---|---|
+| React.js | Component-based user interface |
+| JavaScript | Frontend application logic |
+| Vite | Development and build tooling |
+| HTML5 / CSS3 | Structure and responsive styling |
+| Lucide React | UI icon library |
+| React Hot Toast | User notifications |
 
-!\[TaskFlow Dark Mode](screenshots/dark-mode.png)
+### Backend
 
+| Technology | Purpose |
+|---|---|
+| C# | Backend programming language |
+| .NET 9 | Application platform |
+| ASP.NET Core Web API | REST API |
+| Entity Framework Core | Object-relational mapping |
+| SQLite | Relational database |
 
+### Development
 
-\## Features
+`Git` • `GitHub` • `Visual Studio Code` • `npm` • `.NET CLI` • `REST Client`
 
+---
 
-
-\- Create, edit, and delete tasks
-
-\- Task status management
-
-\- Priority management
-
-\- Due-date tracking
-
-\- Search and filtering
-
-\- Dashboard statistics
-
-\- Completion-rate visualization
-
-\- Persistent activity history
-
-\- Dark mode
-
-\- Toast notifications
-
-\- Responsive user interface
-
-\- REST API architecture
-
-\- SQLite data persistence
-
-
-
-\## Tech Stack
-
-
-
-\### Frontend
-
-
-
-\- React.js
-
-\- JavaScript
-
-\- Vite
-
-\- HTML5
-
-\- CSS3
-
-\- Lucide React
-
-\- React Hot Toast
-
-
-
-\### Backend
-
-
-
-\- C#
-
-\- .NET 9
-
-\- ASP.NET Core Web API
-
-\- Entity Framework Core
-
-\- SQLite
-
-
-
-\### Development Tools
-
-
-
-\- Git
-
-\- GitHub
-
-\- Visual Studio Code
-
-\- REST Client
-
-\- npm
-
-\- .NET CLI
-
-
-
-\## Architecture
-
-
+## 🏗️ Architecture
 
 ```text
+                    ┌─────────────────────────┐
+                    │      React Frontend     │
+                    │       Vite + JSX        │
+                    └────────────┬────────────┘
+                                 │
+                                 │ HTTP / REST
+                                 │ JSON
+                                 ▼
+                    ┌─────────────────────────┐
+                    │   ASP.NET Core Web API  │
+                    │     C# Controllers      │
+                    └────────────┬────────────┘
+                                 │
+                                 │ Entity Framework Core
+                                 ▼
+                    ┌─────────────────────────┐
+                    │         SQLite          │
+                    │    Relational Database  │
+                    └─────────────────────────┘
+```
 
-React Frontend
+The frontend and backend are separated into independent application layers.
 
-&#x20;     |
+React handles presentation and client-side state, while ASP.NET Core exposes
+REST endpoints responsible for application data. Entity Framework Core acts
+as the ORM between the API and SQLite.
 
-&#x20;     | HTTP / REST / JSON
+---
 
-&#x20;     v
+## 🔄 How a Request Flows Through TaskFlow
 
-ASP.NET Core Web API
+For example, when a user creates a task:
 
-&#x20;     |
-
-&#x20;     v
-
+```text
+User
+ │
+ ▼
+React Task Form
+ │
+ │ POST /api/tasks
+ │ JSON
+ ▼
+ASP.NET Core Controller
+ │
+ ▼
 Entity Framework Core
-
-&#x20;     |
-
-&#x20;     v
-
+ │
+ ▼
 SQLite Database
+ │
+ ▼
+API Response
+ │
+ ▼
+React UI Updates
+ │
+ ▼
+Success Toast
+```
 
+This demonstrates the complete request lifecycle between the frontend,
+REST API, ORM and relational database.
 
+---
 
-The React frontend communicates with the ASP.NET Core backend through RESTful API calls. Entity Framework Core acts as the ORM layer between the C# application and SQLite database.
+## 🌐 REST API
 
+### Task Endpoints
 
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/tasks` | Retrieve all tasks |
+| `GET` | `/api/tasks/{id}` | Retrieve a task by ID |
+| `POST` | `/api/tasks` | Create a new task |
+| `PUT` | `/api/tasks/{id}` | Update an existing task |
+| `DELETE` | `/api/tasks/{id}` | Delete a task |
 
-API Endpoints
+### Activity Endpoints
 
-Tasks
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/activity` | Retrieve recent activity |
+| `POST` | `/api/activity` | Create an activity record |
 
-GET     /api/tasks
+---
 
-GET     /api/tasks/{id}
+## 🧩 Project Structure
 
-POST    /api/tasks
-
-PUT     /api/tasks/{id}
-
-DELETE  /api/tasks/{id}
-
-Activity
-
-GET     /api/activity
-
-POST    /api/activity
-
-Project Structure
-
-Taskflow
-
+```text
+Taskflow/
 │
-
-├── Taskflow.api
-
-│   ├── Controllers
-
-│   ├── Data
-
-│   ├── Migrations
-
-│   ├── Models
-
-│   ├── Properties
-
+├── Taskflow.api/
+│   ├── Controllers/
+│   │   ├── TasksController.cs
+│   │   └── ActivityController.cs
+│   │
+│   ├── Data/
+│   │   └── TaskDbContext.cs
+│   │
+│   ├── Models/
+│   │   ├── TaskItem.cs
+│   │   └── ActivityLog.cs
+│   │
+│   ├── Migrations/
+│   ├── Properties/
 │   ├── Program.cs
-
 │   ├── appsettings.json
-
 │   └── Taskflow.api.csproj
-
 │
-
-├── taskflow-ui
-
-│   ├── src
-
-│   │   ├── components
-
-│   │   ├── services
-
+├── taskflow-ui/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ActivityView.jsx
+│   │   │   ├── CompletionChart.jsx
+│   │   │   ├── SettingsView.jsx
+│   │   │   ├── StatsCard.jsx
+│   │   │   ├── TaskCard.jsx
+│   │   │   ├── TaskForm.jsx
+│   │   │   └── TasksView.jsx
+│   │   │
+│   │   ├── services/
+│   │   │   └── taskService.js
+│   │   │
 │   │   ├── App.jsx
-
 │   │   └── App.css
-
-│   ├── package.json
-
-│   └── vite.config.js
-
+│   │
+│   └── package.json
 │
-
-├── screenshots
-
+├── screenshots/
 │   ├── dashboard.png
-
 │   ├── activity.png
-
 │   └── dark-mode.png
-
 │
-
 ├── .gitignore
-
 └── README.md
+```
 
-Getting Started
+---
 
-Prerequisites
+## 🚀 Getting Started
 
+### Prerequisites
 
+Make sure you have installed:
 
-Make sure the following are installed:
+- .NET SDK
+- Node.js
+- npm
+- Git
 
+### 1. Clone the repository
 
+```bash
+git clone https://github.com/Ibaad-AhmedAjaz/TaskFlow.git
+cd TaskFlow
+```
 
-.NET SDK
+### 2. Start the ASP.NET Core API
 
-Node.js
-
-npm
-
-Git
-
-Run the Backend
-
+```bash
 cd Taskflow.api
-
 dotnet restore
-
 dotnet ef database update
-
 dotnet run
+```
 
+The development API is configured to run locally on:
 
-
-The backend runs locally at:
-
-
-
+```text
 http://localhost:5023
+```
 
-Run the Frontend
-
-
+### 3. Start the React application
 
 Open another terminal:
 
-
-
+```bash
 cd taskflow-ui
-
 npm install
-
 npm run dev
+```
 
+Then open:
 
-
-The frontend runs locally at:
-
-
-
+```text
 http://localhost:5173
+```
 
-Key Concepts Demonstrated
+---
 
-Object-Oriented Programming with C#
+## 🧠 Concepts Demonstrated
 
-ASP.NET Core Web API development
+This project demonstrates practical usage of:
 
-RESTful API design
+- Object-Oriented Programming with C#
+- ASP.NET Core Web API development
+- RESTful API design
+- CRUD operations
+- Dependency Injection
+- Entity Framework Core
+- ORM-based database access
+- EF Core migrations
+- Relational data persistence
+- Asynchronous programming with `async` / `await`
+- React components
+- React hooks and state management
+- Frontend/backend API integration
+- Search and filtering
+- CORS configuration
+- Responsive UI design
+- Persistent UI preferences
+- Error handling and user feedback
 
-CRUD operations
+---
 
-Dependency Injection
+## 💡 Why TaskFlow?
 
-Entity Framework Core ORM
+TaskFlow was built as a hands-on full-stack project to strengthen practical
+experience with **C#, ASP.NET Core, REST APIs, Entity Framework Core,
+relational databases and React.js**.
 
-Database migrations
+The project focuses on understanding the complete application lifecycle —
+from a user interaction in React, through an HTTP request to ASP.NET Core,
+to persistent storage using Entity Framework Core and SQLite.
 
-Relational database persistence
+---
 
-React component architecture
+## 🔮 Future Enhancements
 
-React hooks and state management
+- 🔐 Authentication and authorization
+- 👤 User-specific task workspaces
+- 🏷️ Categories and tags
+- 🖱️ Drag-and-drop task organization
+- 🔔 Due-date reminders
+- 📄 Pagination
+- 🧪 Unit and integration testing
+- 🗄️ SQL Server support
+- ☁️ Cloud deployment
 
-Async API communication
+---
 
-Search and filtering
+<div align="center">
 
-Responsive UI development
+## 👨‍💻 Author
 
-Dark mode using local storage
+**Ibaad Ahmed Ajaz**
 
-Persistent activity tracking
+[![GitHub](https://img.shields.io/badge/GitHub-Ibaad--AhmedAjaz-181717?style=for-the-badge&logo=github)](https://github.com/Ibaad-AhmedAjaz)
 
-CORS configuration
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-ibaadahmed077-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ibaadahmed077)
 
-Error handling and user feedback
+<br />
 
-Example Task Flow
+**TaskFlow — React × ASP.NET Core**
 
-
-
-When a user creates a task:
-
-
-
-The React frontend collects the form input.
-
-React sends a POST request containing JSON to the ASP.NET Core API.
-
-The API controller receives the request.
-
-Entity Framework Core maps the C# object to the SQLite database.
-
-The task is stored.
-
-The API returns the created task as JSON.
-
-React refreshes the task list and displays a success notification.
-
-Why I Built This
-
-
-
-I built TaskFlow as a hands-on project to strengthen my understanding of full-stack development using C#, ASP.NET Core, REST APIs, Entity Framework Core, relational databases, and React.js.
-
-
-
-The project helped me understand how a modern frontend communicates with a backend API, how application data is persisted using an ORM, and how to structure a maintainable full-stack application.
-
-
-
-Future Enhancements
-
-User authentication and authorization
-
-Task categories and tags
-
-Drag-and-drop task management
-
-Email reminders
-
-Pagination
-
-Cloud deployment
-
-SQL Server support
-
-Automated unit and integration testing
-
-Author
-
-
-
-Ibaad Ahmed Ajaz
-
-
-
-GitHub: Ibaad-AhmedAjaz
-
-LinkedIn: ibaadahmed077
-
+</div>
